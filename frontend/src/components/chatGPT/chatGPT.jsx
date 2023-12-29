@@ -7,6 +7,21 @@ const ChatGPT = () => {
     const instance = axios.create({baseURL: 'http://localhost:3001'})
 
     const taylorResponse = (response) => {
+        let array = response.split(" ");
+        let objects = [];
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] + " " + array[i+1] == "Page Name:") {
+                objects.push({
+                    "Page Name": "",
+                    "Meta Title":"",
+                    "Meta Description":"",
+                    "Focus Keywords": ""
+                });
+                i++;
+            }
+            
+        }
+
         if (response == '') {
             return null;
         } else {
